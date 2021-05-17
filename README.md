@@ -1,5 +1,7 @@
 # Ably tokens in Cloudflare Workers
 
+Environment to show ably token functions not working in Cloudflare Workers. 
+
 ## Getting started
 
 - Install dependencies: `npm i`
