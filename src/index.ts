@@ -5,10 +5,12 @@ addEventListener('fetch', (event) => {
     const url = new URL(event.request.url)
 
     const fetchEvent = event as FetchEvent;
+    fetchEvent.respondWith(new Response("HELLO there"))
+    return
+
     if (event.request.method === "GET") {
         const token = createToken(fetchEvent)
         fetchEvent.respondWith(new Response(JSON.stringify(token)))
-        return
     }
 
     if (event.request.method === "POST" && url.searchParams.has("clientId")) {

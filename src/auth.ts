@@ -1,12 +1,13 @@
 import { Types } from 'ably/ably'
-// import * as Ably from 'ably/promises'
+// import * as Ably from 'ably'
+// No types available for this yet. Please comment this out and uncomment the above to temporarily get types.
 import * as Ably from 'ably/browser/static/ably-webworker.min'
 
 // @ts-ignore
 const ABLY_API_KEY = ABLY_PRIVATE_API_KEY
 
 export default class Auth {
-  private ably: Ably.Rest
+  private ably: Types.RestPromise
 
   constructor() {
     if (!ABLY_API_KEY) {
@@ -15,7 +16,7 @@ export default class Auth {
     const clientOptions: Ably.Types.ClientOptions = {
       key: ABLY_API_KEY,
     }
-    this.ably = new Ably.Rest(clientOptions)
+    this.ably = new Ably.Rest.Promise(clientOptions)
   }
 
   createToken = async (
@@ -25,22 +26,22 @@ export default class Auth {
     console.log(`Creating a token for clientId: ${clientId}`)
 
     try {
-      console.log("Trying to create token request...")
-      const tokenRequest = await this.ably.auth.createTokenRequest({ clientId });
-      console.log({tokenRequest})
-      console.log("Create token request finished.")
+      console.log('Trying to create token request...')
+      const tokenRequest = await this.ably.auth.createTokenRequest({ clientId })
+      console.log({ tokenRequest })
+      console.log('Create token request finished.')
     } catch (e) {
-      console.error("Create token request failed.")
+      console.error('Create token request failed.')
       console.error(e)
     }
 
     try {
-      console.log("%cNow, separately trying to request token...", "color: blue")
+      console.log('%cNow, separately trying to request token...', 'color: blue')
       return await this.ably.auth.requestToken({ clientId })
-      console.log("Request token finished.")
+      console.log('Request token finished.')
     } catch (e) {
       // This gets called, unknown error.
-      console.error("Request token failed.")
+      console.error('Request token failed.')
       console.error(e)
     }
   }
