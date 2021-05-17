@@ -5,7 +5,9 @@ Environment to show ably token functions not working in Cloudflare Workers.
 ## Getting started
 
 - Install dependencies: `npm i`
-- Install wrangler CLI from [here](https://developers.cloudflare.com/workers/cli-wrangler/install-update).
+- Install wrangler CLI from [here](https://developers.cloudflare.com/workers/cli-wrangler/install-update) or just run `npm i @cloudflare/wrangler -g
+​`. 
+- Then `wrangler login`
 - `wrangler secret put -e test ABLY_PRIVATE_API_KEY`, then enter your API key
 - `cp example.wrangler.toml wrangler.toml` and update the details in `wrangler.toml` based on the comments.
 - Build and upload the worker files to Cloudflare to test, using: `npm run preview`
