@@ -1,6 +1,6 @@
 # Ably tokens in Cloudflare Workers
 
-Environment to show ably token functions not working in Cloudflare Workers. 
+Environment to run Ably in Cloudflare Workers.
 
 ## Getting started
 
