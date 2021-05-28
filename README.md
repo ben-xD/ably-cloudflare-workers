@@ -10,6 +10,9 @@ Environment to run Ably in Cloudflare Workers.
 - Then `wrangler login`
 - `cp example.wrangler.toml wrangler.toml` and update the details in `wrangler.toml` based on the comments. For example, you need to update the account id, zone id, API key.
 - Build and upload the worker files to Cloudflare to test, using: `npm run preview`
+- Notice the current issue:
+
+![](./images/error-request-is-not-a-function.png)
 
 # Modified from [`workers-typescript-template`](https://github.com/cloudflare/worker-typescript-template)
 
