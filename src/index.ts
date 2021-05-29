@@ -2,7 +2,6 @@ import { createTokenHandler } from './handler'
 
 // Event listener cannot be async!
 addEventListener('fetch', (event) => {
-
   const url = new URL(event.request.url)
   const fetchEvent = event as FetchEvent
 

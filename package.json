@@ -13,7 +13,7 @@
     "test": "npm run test:clean && npm run transpile && mocha --require source-map-support/register --recursive transpiled/test",
     "transpile": "tsc --project ./test",
     "publish": "npm run build && wrangler publish --env test",
-    "logs": "wrangler tail -e test"
+    "logs": "wrangler tail --format json -e test | jq"
   },
   "author": "Ben Butterworth",
   "license": "Apache-2.0",
