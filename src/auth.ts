@@ -16,7 +16,7 @@ export default class Auth {
     this.ably = new Ably.Rest.Promise(clientOptions)
   }
 
-  createToken = async (
+  createTokenRequest = async (
     clientId: string,
   ): Promise<Ably.Types.TokenRequest | void> => {
     console.log(`Creating a token request for clientId: ${clientId}`)
