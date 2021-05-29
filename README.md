@@ -5,11 +5,13 @@ Environment to run Ably in Cloudflare Workers.
 ## Getting started
 
 - Install dependencies: `npm i`
-- Install wrangler CLI from [here](https://developers.cloudflare.com/workers/cli-wrangler/install-update) or just run `npm i @cloudflare/wrangler -g
-​`. 
+- Install wrangler CLI from [here](https://developers.cloudflare.com/workers/cli-wrangler/install-update) or just run `npm i @cloudflare/wrangler -g ​`.
 - Then `wrangler login`
 - `cp example.wrangler.toml wrangler.toml` and update the details in `wrangler.toml` based on the comments. For example, you need to update the account id, zone id, API key.
 - Build and upload the worker files to Cloudflare to test, using: `npm run preview`
+- To get logs from deployed cloudflare worker:
+  - `brew install cloudflare/cloudflare/cloudflared`
+  - `npm run logs`
 
 # Modified from [`workers-typescript-template`](https://github.com/cloudflare/worker-typescript-template)
 
