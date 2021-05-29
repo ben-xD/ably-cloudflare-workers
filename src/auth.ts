@@ -19,7 +19,7 @@ export default class Auth {
   createToken = async (
     clientId: string,
   ): Promise<Ably.Types.TokenRequest | void> => {
-    console.log(`Creating a token for clientId: ${clientId}`)
+    console.log(`Creating a token request for clientId: ${clientId}`)
 
     try {
       console.log('Trying to create token request...')
@@ -30,15 +30,5 @@ export default class Auth {
       console.error('Create token request failed.')
       console.error(e)
     }
-
-    // try {
-    //   console.log('%cNow, separately trying to request token...', 'color: blue')
-    //   return await this.ably.auth.requestToken({ clientId })
-    //   console.log('Request token finished.')
-    // } catch (e) {
-    //   // This gets called, unknown error.
-    //   console.error('Request token failed.')
-    //   console.error(e)
-    // }
   }
 }
