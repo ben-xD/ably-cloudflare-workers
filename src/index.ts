@@ -7,9 +7,13 @@ addEventListener('fetch', async (event) => {
 
   const clientId = url.searchParams.get('clientId')
   if (url.pathname == '/createTokenRequest' && event.request.method === 'GET') {
-    const tokenRequest = await createToken(clientId)
-    console.log(tokenRequest)
-    return fetchEvent.respondWith(new Response(JSON.stringify(tokenRequest)))
+    try {
+      const tokenRequest = await createToken(clientId)
+      console.log(tokenRequest)
+      return fetchEvent.respondWith(new Response(JSON.stringify(tokenRequest)))
+    } catch (e) {
+      return fetchEvent.respondWith(new Response(null, { status: 400 }))
+    }
   }
 
   if (url.pathname == '/bob' && event.request.method === 'GET') {

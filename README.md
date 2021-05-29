@@ -12,6 +12,7 @@ Environment to run Ably in Cloudflare Workers.
 - To get logs from deployed cloudflare worker:
   - `brew install cloudflare/cloudflare/cloudflared`
   - `npm run logs`
+  - Then make a request to your worker
 
 # Modified from [`workers-typescript-template`](https://github.com/cloudflare/worker-typescript-template)
 
