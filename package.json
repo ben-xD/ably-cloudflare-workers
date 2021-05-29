@@ -12,7 +12,7 @@
     "test:clean": "rimraf ./transpiled/src ./transpiled/test",
     "test": "npm run test:clean && npm run transpile && mocha --require source-map-support/register --recursive transpiled/test",
     "transpile": "tsc --project ./test",
-    "release": "npm run build && wrangler publish --env test",
+    "publish": "npm run build && wrangler publish --env test",
     "logs": "wrangler tail -e test"
   },
   "author": "Ben Butterworth",

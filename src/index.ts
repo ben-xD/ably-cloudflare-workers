@@ -2,9 +2,13 @@ import { createTokenHandler } from './handler'
 
 // Event listener cannot be async!
 addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url)
 
+  const url = new URL(event.request.url)
   const fetchEvent = event as FetchEvent
+
+  if (url.protocol !== 'https:') {
+    return fetchEvent.respondWith(new Response('Use HTTPS', { status: 400 }))
+  }
 
   const clientId = url.searchParams.get('clientId')
   if (url.pathname == '/createTokenRequest' && event.request.method === 'GET') {
