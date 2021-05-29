@@ -1,11 +1,14 @@
-import Auth from "./auth";
-import { v4 as uuidv4 } from 'uuid';
+import Auth from './auth'
+import * as Ably from 'ably/browser/static/ably-webworker.min'
+import { v4 as uuidv4 } from 'uuid'
 
 const auth = new Auth()
 
-export function createToken(fetchEvent: FetchEvent): void {
-  const clientId = uuidv4();
-  const tokenDetails = auth.createToken(clientId, (token) => {
-      fetchEvent.respondWith(new Response(JSON.stringify(tokenDetails)))
-  })
+export const createToken = async (
+  clientId: string | null,
+): Promise<Ably.Types.TokenRequest | void> => {
+  if (!clientId) {
+    clientId = uuidv4()
+  }
+  return await auth.createToken(clientId)
 }

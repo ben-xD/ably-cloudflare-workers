@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "NODE_ENV=development npm run build",
-    "debug": "webpack --watch & cfworker run worker.js -p 14000 --watch --inspect",
+    "debug": "webpack --watch & cfworker run dist/worker.production.js -p 14000 --watch --inspect",
     "preview": "webpack && wrangler preview --env test",
     "format": "prettier --write '**/*.{ts,js,css,json,md}'",
     "test:clean": "rimraf ./transpiled/src ./transpiled/test",

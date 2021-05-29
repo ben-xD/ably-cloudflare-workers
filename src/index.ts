@@ -1,27 +1,16 @@
-import {createToken} from './handler'
+import { createToken } from './handler'
 
+addEventListener('fetch', async (event) => {
+  const url = new URL(event.request.url)
 
-addEventListener('fetch', (event) => {
-    const url = new URL(event.request.url)
+  const fetchEvent = event as FetchEvent
 
-    const fetchEvent = event as FetchEvent;
-    fetchEvent.respondWith(new Response("HELLO there"))
-    return
+  const clientId = url.searchParams.get('clientId')
+  if (event.request.method === 'GET') {
+    const tokenRequest = await createToken(clientId)
+    console.log(tokenRequest)
+    return fetchEvent.respondWith(new Response(JSON.stringify(tokenRequest)))
+  }
 
-    if (event.request.method === "GET") {
-        const token = createToken(fetchEvent)
-        fetchEvent.respondWith(new Response(JSON.stringify(token)))
-    }
-
-    if (event.request.method === "POST" && url.searchParams.has("clientId")) {
-        const clientId = url.searchParams.get("clientId")
-        if (clientId) {
-            return createToken(fetchEvent, clientId)
-            // return fetchEvent.respondWith()
-        } else {
-            fetchEvent.respondWith(new Response("clientId query param required.", {status: 400}))
-        }
-    }
-
-    fetchEvent.respondWith(new Response(null, {status: 400}))
+  fetchEvent.respondWith(new Response(null, { status: 400 }))
 })
